@@ -75,7 +75,7 @@ Schema:
 
  
 User             Survey          Question         Answer              Results
-:id               :id             :id             :id                  :id 
+:id              :id             :id             :id                  :id 
 :Name            :Title         :survey_id        :question_id        :user_id
 :Email           :Description   :question_text    :answer_text        :answer_id 
 :Company         :user_id                         
