@@ -17,7 +17,7 @@ Trello
 Wireframe 
 ---------
 
-<a href="https://erinjoansnyder.mybalsamiq.com/projects/surveygorilla/Survey%20Gorilla%20Wirefram">QuizzerFly Wireframe</a>
+<a href="https://erinjoansnyder.mybalsamiq.com/projects/surveygorilla/prototype/Survey%20Gorilla%20Wirefram?key=c6a97ed7be1981ce5515603ebee08a00054fe977">QuizzerFly Wireframe</a>
 
 Git Workflow
 -----------
