@@ -4,7 +4,7 @@ class CreateResults < ActiveRecord::Migration
       t.belongs_to :user
       t.belongs_to :survey
       t.belongs_to :question
-      t.belongs_to :answer
+      t.belongs_to :choice
 
       t.timestamps
     end
