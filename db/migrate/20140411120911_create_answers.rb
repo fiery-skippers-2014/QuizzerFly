@@ -1,6 +1,6 @@
-class CreateResponses < ActiveRecord::Migration
+class CreateAnswers < ActiveRecord::Migration
   def change
-    create_table :responses do |t|
+    create_table :answers do |t|
       t.belongs_to :question
       t.string :answer_text
 
