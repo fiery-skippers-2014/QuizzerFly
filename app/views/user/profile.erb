@@ -1,0 +1,65 @@
+<!-- List of posts authored by user
+      List of comments posted by user
+
+      Option to create new post
+      Option to create new comment
+          -->
+<div id="content" class="main container-mid">
+
+<!-- This User's MAIN INFORMATION -->
+  <div class="container-sml">
+    <% @logged_in_user = current_user %>
+
+    user: <%= @user.name %> | ID:<%= @user.id %><br>
+    created: <%= @user.created_at %><br>
+    about: <%= @user.about %><br>
+    email: <%= @user.email %><br>
+  </div>
+
+  <!-- User can create a new post -->
+  <div class="container-sml">
+    <% if @logged_in_user %>
+      <%= erb :_create_post %>
+    <% end %>
+    <hr>
+  </div>
+
+<!-- This User's posts -->
+  <div class="container-sml panel">
+    <h2><%= @user.name %>'s <%= @user.posts.count %> Post(s)</h2>
+
+    <div class="container-sml">
+      <% for post in @user.posts.sort_by{ |post| post.created_at} %>
+        <% @post = post %>
+      <section class="post">
+        <a href="/posts/<%= post.id %>"><%= post.title %></a>
+        <span class="time"> | <%= post.created_at.strftime("%H hours and %M minutes ago") %></span><br>
+        <%= post.message %><br>
+
+        <%= erb :_buttons, :layout => false, :locals => {:post => post} %>
+
+      </section>
+      <% end %>
+    </div>
+  </div>
+
+
+
+<!-- This User's comments -->
+  <div class="container-sml panel">
+    <h2><%= @user.name %>'s <%= @user.comments.count %> Comment(s)</h2>
+
+    <div class="container-sml">
+      <% for comment in @user.comments.sort_by{ |comment| comment.created_at} %>
+      <section class="comment">
+        <a href="/users/<%= comment.user.id %>">@<%= comment.user.name %></a>
+        <span class="time"> | <%= comment.created_at.strftime("%H hours and %M minutes ago") %></span>
+        <br>
+        <%= comment.note %><br>
+
+      </section>
+      <% end %>
+    </div>
+  </div>
+
+</div>

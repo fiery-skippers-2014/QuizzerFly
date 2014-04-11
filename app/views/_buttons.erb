@@ -1,0 +1,10 @@
+<% @logged_in_user = current_user %> 
+
+<% if @logged_in_user.id != @post.user_id %>
+  <span><a href="/posts/<%= @post.id %>/comments"><button type="button">Comment</button></a></span>
+<% else %>
+  <span><a href="/posts/<%= @post.id %>/delete"><button type="button">Delete</button></a></span>
+<% end %>
+
+
+        

@@ -1,0 +1,46 @@
+<!-- /post/:id based on params
+      Lists URL to posted page
+      Lists description/message about post
+      Lists user who authored the post (with link to profile)
+
+      List Comments associated with post
+      Comments link to user profile who authored it?
+      OR comments link to comment/:id page?
+
+      If user is logged in, can add a new comment
+
+       -->
+
+
+<div id="content" class="main container-mid">
+<!-- SHOW ALL POSTS -->
+<!-- ul list of posts with href to '/post/:id' -->
+  <!-- <div class="container-mid"> -->
+  <h3>Post ID:<%= @post.id %></h3>
+  <div class="post panel">
+    <%= @post.title %> by <a href="/users/<%= @user.id %>"><%= @user.name %></a> | 
+    <span class="time"><%= @post.created_at.strftime("%H minutes and %M seconds ago") %></span><br>
+    <%= @post.message %><br>
+
+    <% if @logged_in_user == @user %>
+      <span><a href="/posts/<%= @post.id %>/comments"><button type="button">Comment</button></a></span>
+    <% else %>
+      <span><a href="/posts/<%= @post.id %>/delete"><button type="button">Delete</button></a></span>
+    <% end %>
+
+  </div>
+</div>
+
+<% if @post.comments.any? %>
+  <div id="content" class="main container-mid">
+    <% for comment in @post.comments.sort_by{ |comment| comment.created_at} %>
+      <section class="comment">
+        <a href="/users/<%= comment.user.id %>">@<%= comment.user.name %></a>
+        <span class="time"> | <%= comment.created_at.strftime("%H hours and %M minutes ago") %></span>
+        <br>
+        <%= comment.note %><br>
+
+      </section>
+    <% end %>
+  </div>
+<% end %>
