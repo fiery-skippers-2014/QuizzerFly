@@ -66,14 +66,14 @@ Additional Features/ Weekend Work  AKA Purple Bunnies!!!
 
 Schema: 
 -------
-1 user has many surveys
-1 survey has many questions
-1 question has many answers
-1 survey belongs to 1 user
-1 question belongs to 1 survey
-1 answer belongs to 1 question 
-1 user has many completed-surveys
-1 survey has many completed-survey 
+* 1 user has many surveys  
+* 1 survey has many questions  
+* 1 question has many answers  
+* 1 survey belongs to 1 user  
+* 1 question belongs to 1 survey  
+* 1 answer belongs to 1 question   
+* 1 user has many completed-surveys  
+* 1 survey has many completed-survey   
 
 
 
