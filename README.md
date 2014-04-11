@@ -3,6 +3,8 @@ QuizzerFly
 
 Survey Gorilla Team Project with Alexandra, Erin, Jonathan and Ravi!
 
+Our logo will be a purple bunny with butterfly wings. (TO BE ADDED LATER)
+
 
 Trello
 -------
@@ -19,15 +21,15 @@ Wireframe
 
 User Stories
 -----------
-1. As a user, I want to be able to take a survey without logging in or signing up?
-2. As a user, I want to be able to view the results of the survey without logging in or signing up?
-2. As a user, I want to be able to login or signup in order to create a new survey.
-3. As a user, I want a profile page where I can view the surveys I've created.
-3. As a user, I want to be able to edit or delete my create surveys.
-4. As a user, I want to be able to take my own survey.
-5. As a user, I want to be limited to only taking a survey once.
-6. As a user, I want the ability to vote up surveys.
-7. As a user, I want to be able to share my survey through email?
+* As a user, I want to be able to login or signup in order to take or create a new survey.
+* As a user, I want a profile page where I can view the surveys I've created.
+* As a user, (FOR NOW) I want to be able to view a homepage that has all of the surveys every user created.
+* As a user, I want to be able to edit or delete my create surveys.
+* As a user, I want to be able to take my own survey.
+* As a user, I want to be limited to only taking a survey once.
+* As a user, I want the ability to vote up surveys.
+* As a user, I want to be able to share my survey through email
+* (EVENTUALLY) I want to be able for people to ONLY take my survey if they receive the email (no more list on the homepage)
 
 
 
@@ -41,6 +43,8 @@ What makes up a survey?
 * Delete a question before submitting it
 * Add a description
 
+
+
 What makes up a Question? 
 ------------------------
 * Input field where you can type in any text
@@ -48,8 +52,9 @@ What makes up a Question?
 * Submit a finished question
 
 
-Additional Features  AKA Purple Bunnies
-------------------
+
+Additional Features/ Weekend Work  AKA Purple Bunnies!!!
+----------------------------------------------------
 * Ability to vote up surveys
 * Track who takes my survey
 * Share my survey via email
@@ -69,10 +74,10 @@ Schema:
 1 answer belongs to 1 question 
 
  
-User             Survey          Question         Answer
-:id               :id             :id             :id
-:Name            :Title         :survey_id        :question_id
-:Email           :Description   :question_text    :answer_text
+User             Survey          Question         Answer              Results
+:id               :id             :id             :id                  :id 
+:Name            :Title         :survey_id        :question_id        :user_id
+:Email           :Description   :question_text    :answer_text        :answer_id 
 :Company         :user_id                         
 :Password       :status
 :timestamps     :Category?
