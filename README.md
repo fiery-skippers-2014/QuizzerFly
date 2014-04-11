@@ -55,5 +55,25 @@ Additional Features  AKA Purple Bunnies
 * Share my survey via email
 * Able to see data on my survey
 * Mobile ready
+* Survey Categories
+* Answers other than multiple-choice
 
 
+Schema: 
+-------
+1 user has many surveys
+1 survey has many questions
+1 question has many answers
+1 survey belongs to 1 user
+1 question belongs to 1 survey
+1 answer belongs to 1 question 
+
+ 
+User             Survey          Question         Answer
+:id               :id             :id             :id
+:Name            :Title         :survey_id        :question_id
+:Email           :Description   :question_text    :answer_text
+:Company         :user_id                         
+:Password       :status
+:timestamps     :Category?
+                :timestamps
