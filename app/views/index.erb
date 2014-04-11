@@ -1,0 +1,21 @@
+<div id="content" class="main container-mid">
+<!-- SHOW ALL POSTS -->
+<!-- ul list of posts with href to '/post/:id' -->
+  <!-- <div class="container-mid"> -->
+  <h3>All Posts</h3>
+<!--   <% logged_in_user = current_user %> -->
+
+  <% if @posts %>
+    <% for post in @posts %>
+      <div class="post panel">
+        <% @post = post %>
+        <a href="/posts/<%= post.id %>"><%= post.title %></a> by <%= post.user.name %> |
+        <span class="time"><%= post.created_at.strftime("%H minutes ago") %></span><br>
+        <%= post.message %><br>
+
+        <%= erb :_buttons, :layout => false, :locals => {:post => @post} %>
+
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<div id="header">
+  <h1 id="app_name" class="top_bar_title">Survey Gorilla</h1>
+
+  <nav class="main_nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <% if current_user %>
+        <li><a href="/users/<%= @logged_in_user.id %>"><%= @logged_in_user.name %>'s Page</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <% else %>
+        <li><a href="/sessions/new">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
+<div class="clearfix"></div>
