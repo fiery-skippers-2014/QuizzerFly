@@ -30,7 +30,7 @@ User Stories
 * As a user, I want the ability to vote up surveys.
 * As a user, I want to be able to share my survey through email
 * (EVENTUALLY) I want to be able for people to ONLY take my survey if they receive the email (no more list on the homepage)
-
+* As a user, I want to be required to finisha survey before I submit it.
 
 
 What makes up a survey?
@@ -72,13 +72,20 @@ Schema:
 1 survey belongs to 1 user
 1 question belongs to 1 survey
 1 answer belongs to 1 question 
+1 user has many completed-surveys
+1 survey has many completed-survey 
 
- 
-User             Survey          Question         Answer              Results
-:id              :id             :id             :id                  :id 
-:Name            :Title         :survey_id        :question_id        :user_id
-:Email           :Description   :question_text    :answer_text        :answer_id 
-:Company         :user_id                         
-:Password       :status
-:timestamps     :Category?
-                :timestamps
+
+
+USER: id, Name, Email, Company, Password, Timestamps
+
+SURVEY: id, Title, Description, User_Id, Status (completed?), Category? (Weekend Work), timestamps
+
+QUESTION: id, Survey_Id, QuestionText
+
+ANSWER: id, Question_Id, AnswerText
+
+RESULTS: id, User_Id, Answer_Id, 
+
+COMPLETED_SURVEYS: id, User_id, Survey_Id
+
