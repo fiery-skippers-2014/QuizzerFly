@@ -3,7 +3,9 @@ QuizzerFly
 
 Survey Gorilla Team Project with Alexandra, Erin, Jonathan and Ravi!
 
-Our logo will be a purple bunny with butterfly wings. (TO BE ADDED LATER)
+Our logo will be a purple bunny with butterfly wings. 
+
+<img height="300px" src="http://i.imgur.com/qEAXN7y.jpg">
 
 
 Trello
