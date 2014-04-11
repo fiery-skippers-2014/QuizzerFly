@@ -17,6 +17,15 @@ Wireframe
 
 <a href="https://erinjoansnyder.mybalsamiq.com/projects/surveygorilla/Survey%20Gorilla%20Wirefram">QuizzerFly Wireframe</a>
 
+Git Workflow
+-----------
+1. Each feature gets its own branch
+2. Each team member will commit often with descriptive commit messages
+3. Each team member will pull from master and resolve merge conflicts on their own local machine before pushing to Github
+4. Each team member will check Github for pull requests and either merge or close (and notify the person who issued the pull request) before pulling from master.
+5. Each team member should submit a pull request ONLY once their feature branch has been tested!!!!!!!!! 
+6. Anyone can merge a pull request (except their own, of course) into master after looking over the code. If the code is bad or breaks things, the team member should close it and notify the person who issued the pull request immediately!
+
 
 
 User Stories
@@ -79,7 +88,7 @@ Schema:
 
 USER: id, Name, Email, Company, Password, Timestamps
 
-SURVEY: id, Title, Description, User_Id, Status (completed?), Category? (Weekend Work), timestamps
+SURVEY: id, Title, Description, User_Id, Category? (Weekend Work), timestamps
 
 QUESTION: id, Survey_Id, QuestionText
 
