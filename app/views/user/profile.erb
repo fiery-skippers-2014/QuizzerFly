@@ -21,16 +21,21 @@
 
   <% if @logged_in_user %>
     <!-- This user can create their own survey -->
-      <%= erb :'survey/create_survey'%>
-  <br>
-
-    <!-- This User's surveys -->
-      <%= erb :'survey/show_surveys' %>
-  <br>
-
-    <!-- Survey's this user has taken -->
-      <%= erb :'survey/completed_surveys' %>
-
+    <%= erb :'survey/_create_survey' %>
   <% end %>
+
+  <br>
+
+  <!-- This User's surveys -->
+  <h3><%= @user.name %>'s Survey(s)</h3>
+  <hr>
+  <%= erb :'survey/_show_surveys', :layout => false, :locals => {:surveys => @surveys}  %>
+  <br>
+
+  <!-- Survey's this user has taken -->
+  <h3>Survey(s) <%= @user.name %> has Taken</h3>
+  <hr>
+  <%= erb :'survey/_completed_surveys', :layout => false, :locals => {:surveys => @user.completed_surveys}  %>
+
 
 </div>

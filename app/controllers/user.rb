@@ -1,10 +1,10 @@
 #---------------USER PROFILE PAGE-----------------
 
-
 # Show User page
 get '/users/:user_id' do
   if current_user
     @user = User.find(params[:user_id])
+    @surveys = Survey.where(user_id: current_user.id).order("created_at DESC")
     # @surveys = Survey.find(current_user.id)
     erb :'user/profile'
   else
@@ -17,7 +17,6 @@ end
 get '/register' do
   erb :'user/register'
 end
-
 # SAVE USER INFO AS A NEW SESSION
 post '/register' do
   password_salt = BCrypt::Engine.generate_salt
@@ -50,6 +49,7 @@ get 'users/:user_id/update' do
 end
 # ALLOW USER TO EDIT/UPDATE THEIR INFO
 post 'users/:user_id/update' do
+  redirect '/'
 end
 
 

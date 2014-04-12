@@ -13,7 +13,7 @@ body {
   font-family: Verdana;
   font-size:13px;
   color:#292f33;
-  margin: -17px auto 0 auto;
+  margin: -10px auto 0 auto;
   /*line-height: 18px;*/
 }
 
@@ -147,6 +147,10 @@ nav ul li {
 }
 
 
+.bottom_bar_footer {
+  padding: 20px 20px 0px 0px;
+  font-family: Verdana;
+}
 
 
 /* END OF OUR CSS */
