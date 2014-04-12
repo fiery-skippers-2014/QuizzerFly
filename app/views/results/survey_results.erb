@@ -1,0 +1,28 @@
+<div id="content" class="main container-mid">
+  <h3>Post ID:<%= @survey.id %></h3>
+  
+  <div class="survey panel">
+    <%= @survey.title %> by <a href="/users/<%= @user.id %>"><%= @user.name %></a> | 
+    <span class="time"><%= @survey.created_at.strftime("%H minutes and %M seconds ago") %></span><br>
+    <%= @survey.description %><br>
+    <hr>
+
+    <!-- SHOWING THE COMPLETED_SURVEY'S QUESTIONS and THEIR ANSWERS-->
+    <% @survey.questions.each do |question| %>
+      <li>Question: <%= question.question_text %></p>
+
+      <% if question.choices != [] %>
+
+        <% question.choices.each do |choice| %>
+          <div id='label'><%= choice.choice_text %></div>
+        <% end %>
+      <% end %>
+
+    <% else %>
+      <p>This question currently has no choices.</p>
+    <% end %>
+
+    <a href="/completed_surveys/new">Submit</a>
+
+  </div>
+</div>

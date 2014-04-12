@@ -1,9 +1,3 @@
-<!-- List of posts authored by user
-      List of comments posted by user
-
-      Option to create new post
-      Option to create new comment
-          -->
 <div id="content" class="main container-mid">
 
 <!-- This User's MAIN INFORMATION -->
@@ -14,23 +8,29 @@
     created: <%= @user.created_at %><br>
     email: <%= @user.email %><br>
 
+<br>
+<hr><hr>
+<br>
 
-<hr>
 
-
-
-  <% if @logged_in_user %>
+  <% if @user.id == @logged_in_user.id %>
     <!-- This user can create their own survey -->
-      <%= erb :'survey/create_survey'%>
-  <br>
-
-    <!-- This User's surveys -->
-      <%= erb :'survey/show_surveys' %>
-  <br>
-
-    <!-- Survey's this user has taken -->
-      <%= erb :'survey/completed_surveys' %>
-
+    <%= erb :'survey/_create' %>
   <% end %>
+
+  <br><br><br>
+
+  <!-- This User's surveys -->
+  <h3><%= @user.name %>'s Survey(s)</h3>
+  <hr>
+  <%= erb :'survey/_show_all', :layout => false, :locals => {:surveys => @user.surveys}  %>
+
+  <br><br>
+
+  <!-- Survey's this user has taken -->
+  <h3>Survey(s) <%= @user.name %> has Taken</h3>
+  <hr>
+  <%= erb :'survey/_show_all', :layout => false, :locals => {:surveys => @user.completed_surveys}  %>
+
 
 </div>
