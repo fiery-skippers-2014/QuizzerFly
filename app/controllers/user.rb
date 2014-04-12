@@ -5,7 +5,7 @@
 get '/users/:user_id' do
   if current_user
     @user = User.find(params[:user_id])
-    @surveys = Survey.find_by_creator_id(current_user.id)
+    # @surveys = Survey.find(current_user.id)
     erb :'user/profile'
   else
     redirect "/"
@@ -62,7 +62,7 @@ end
 ## DESTROY YOUR ACCOUNT
 get '/users/:user_id/delete' do
   if current_user.id == params[:user_id]
-    erb :'users/delete'
+    erb :'user/delete'
   else
     redirect '/'
   end
