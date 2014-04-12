@@ -13,15 +13,15 @@ function View() {
   var answerCount = 0;
 
   View.prototype.add_question = function () {
-    $('#addQuestionBtn').append('<br><input type="text" name="question[' + this.questionCount + ']" placeholder="Question">');
+    $('#questionInput').append('<input type="text" name="question[' + this.questionCount + ']" placeholder="Question"><br>');
     questionCount++;
-    console.log(questionCount)
+     console.log(questionCount)
   };
 
   View.prototype.add_answer = function () {
-    $('#addAnswerBtn').append('<br><input type="text" name="answer[' + this.answerCount + '] placeholder="Answer">');
+    $('#answerInput').append('<input type="text" name="answer[' + this.answerCount + ']" placeholder="Answer"><br>');
     answerCount++;
-    console.log(answerCount)
+     console.log(answerCount)
   }
 }
 
@@ -29,8 +29,8 @@ function View() {
 
 function Controller (view) {
   this.view = view;
-  $('#addQuestionBtn').click(this.view.add_question);
-  $('#addAnswerBtn').click(this.view.add_answer);
+  $('#addQuestionBtn').unbind().click(this.view.add_question);
+  $('#addAnswerBtn').unbind().click(this.view.add_answer);
 }
 
 

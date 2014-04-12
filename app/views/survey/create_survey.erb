@@ -20,13 +20,15 @@
 
 <div id="question_inputs">
   <form action="#" method="post">
+  <div id="questionInput">
     <input type="text" name="question[0]" placeholder="Question"><br>
+  </div>
     <a id="addQuestionBtn" href="#"> Add Question</a>
   <div id="answerInput">
-    <input type="text" name="answer[0]" placeholder="Answer"><br>
-    <input type="text" name="answer[0]" placeholder="Answer"><br>
-    <a id="addAnswerBtn" href="#"> Add Answer</a><br>
+    <input type="text" name="question[0][answer[0]"] placeholder="Answer"><br>
+    <input type="text" name="question[0][answer[0]"] placeholder="Answer"><br>
   </div>
+    <a id="addAnswerBtn" href="#"> Add Answer</a><br>
     <input type="submit" value="Submit">
   </form>
  </div>
