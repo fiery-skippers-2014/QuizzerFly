@@ -14,9 +14,7 @@ function View() {
 //Controller
 
 function Controller (view) {
-  // var self = this;
   this.view = view;
-  // this.view.buttonWhichDoesSomething.click(this.view.add_question)
   $('#questionbtn').click(this.view.add_question);
 }
 
@@ -28,11 +26,3 @@ $(document).ready(function() {
 
 });
 
-
-  // this.questionCount = 1;
-
-  // addQuestion: function(event){
-  //   event.preventDefault();
-  //   $("#question_inputs").append('<input type="text" name="question[' + this.questionCount.toString() + ]' placeholder="Question">');
-  //   this.questionCount++;
-  // }
