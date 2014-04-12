@@ -2,7 +2,7 @@
 
 # SEND TO LOGIN PAGE
 get '/sessions/new' do
-  erb :'users/login'
+  erb :'user/login'
 end
 
 
@@ -11,6 +11,7 @@ post '/sessions/new' do
   @user = User.find_by_email(params[:email])
   if @user.password_hash == BCrypt::Engine.hash_secret(params[:password_hash], @user.password_salt)
     session[:user_id] = @user.id
+    redirect "/users/#{@user.id}"
   end
   redirect '/'
 end

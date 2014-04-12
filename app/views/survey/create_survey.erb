@@ -1,18 +1,27 @@
-<div>
 
-  <div>
-    <form action="" method="post">
-      <input type="text" name="survey_title" placeholder="Survey Title">
-      <textarea rows="5" cols="10" name="survey_description" placeholder="Description"></textarea>
+<h2>Create A New Survey</h2>
+<hr>
 
-      <div id="question_inputs">
-        <input type="text" name="question[0]" placeholder="Question">
-      </div>
-      <input type="submit" value="Submit">
-    </form>
-       <a href="#" id ="add_question"> Add Question</a>
-  </div>
-
-
+<form action="/survey/create" method="POST" class="create_survey">
+  <label for="title">Title:<br>
+  <input type="text" name="title" placeholder="Survey Title">
+  </label>
+  <label for="description">Description:
+  <input type="text" name="description" placeholder="Survey Description">
+  </label>
+  <input type="submit" value="Begin Survey Creation">
+</form>
 </div>
 
+<!-- Making Questions -->
+
+<div>
+  <form action="" method="post">
+
+    <div id="question_inputs">
+      <input type="text" name="question[0]" placeholder="Question">
+    </div>
+   <a href="#" id ="add_question"> Add Question</a>
+    <input type="submit" value="Submit">
+  </form>
+ </div>
