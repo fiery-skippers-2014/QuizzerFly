@@ -1,5 +1,8 @@
 <div id="content" class="main container-mid">
 
-<p>Woohoo!! check this out!</p>
+<h3>Why don't you try a survey?</h3>
+
+<!-- SHOWING ALL SURVEYS -->
+<%= erb :'survey/_show_all', :layout => false, :locals => {:surveys => @surveys} %>
 
 </div>

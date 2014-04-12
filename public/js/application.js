@@ -4,17 +4,15 @@ $(document).ready(function() {
   var view = new View()
   view.first_questions()
   var controller = new Controller(view)
+
 });
-
-
 
 
 //View JS
 
 function View() {
-
   event.preventDefault();
-  var answerCount = 0;
+
 
   View.prototype.first_questions = function () {
     var questionStartingCount = 1;
@@ -23,7 +21,6 @@ function View() {
     var answerCount = 2
       var displayCount = varCount+1;
       $node += '<div class="question" id="question[' + displayCount + ']"><div id="questionInput"><input type="text" name="question[' + displayCount + ']" placeholder="Question"><br></div><div id="answerInputs1"><input type="text" name="question[1]answer[1]" placeholder="Answer"><br><input type="text" name="question[1]answer[2]" placeholder="Answer"><br></div><a class="addAnswerBtn" id="addAnswerBtn1" href="#"> Add Answer</a>';
-
     }
 
     $('#questions').append($node);
@@ -31,8 +28,8 @@ function View() {
 
   View.prototype.addAnswer = function () {
     var currentChoiceInputs = $(this).prev()
-   console.log("This is the number of children for current choice inputs: " + $(this).prev().children('input').length)
-var next_input_count = $(this).prev().children('input').length + 1
+    console.log("This is the number of children for current choice inputs: " + $(this).prev().children('input').length)
+    var next_input_count = $(this).prev().children('input').length + 1
     $node = '<input type="text" name="question[1]answer[' + next_input_count + ']" placeholder="Answer"><br>'
 
      currentChoiceInputs.append($node);
@@ -63,5 +60,3 @@ function Controller (view) {
   $('#addQuestionBtn').unbind().click(this.view.addQuestion);
   $('#addAnswerBtn1').unbind().click(this.view.addAnswer);
 }
-
-
