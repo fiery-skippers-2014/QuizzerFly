@@ -1,3 +1,16 @@
+// Finally you have to initialize the plugin with your desired configuration:   Where does this go?
+
+// <script type="text/javascript">
+// $(function() {
+//     $('.chart').easyPieChart({
+//         //your configuration goes here
+//     });
+// });
+// </script>
+
+//Example:
+
+
 $(function () {
     var chart;
 
