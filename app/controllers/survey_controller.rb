@@ -3,8 +3,11 @@
 
 # Create survey from create_survey form
 get '/surveys/new' do
-  @survey = Survey.create(params)
-  redirect "/surveys/#{@survey.id}"
+
+erb :'survey/create_survey'
+
+#  @survey = Survey.create(params)
+  # redirect "/surveys/#{@survey.id}"
 end
 
 # Create survey from create_survey form
