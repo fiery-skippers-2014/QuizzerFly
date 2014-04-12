@@ -17,7 +17,7 @@ end
 
 
 
-# Show survey by survey id
+# Show survey by survey id             # SHOW RESULT DATA??
 get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
@@ -52,9 +52,9 @@ end
 
 # View the data results of a survey in a chart
 
-get '/surveys/:survey_id/data' do
+get '/surveys/:survey_id/data_report' do
   @survey = Survey.find(params[:survey_id])
-  erb :'data_results'
+  erb :'data_report'
 
 end
 
