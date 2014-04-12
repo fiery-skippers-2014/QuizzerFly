@@ -5,7 +5,7 @@ function View() {
   this.buttonWhichDoesSomething = $('#add_question');
 
   this.add_question = function () {
-    $('#question_inputs').append("<br><input type='text' name='question[0]' placeholder='Question'>")
+    $('#questionbtn').append("<br><input type='text' name='question[0]' placeholder='Question'>")
 
 
   };
@@ -17,7 +17,7 @@ function Controller (view) {
   // var self = this;
   this.view = view;
   // this.view.buttonWhichDoesSomething.click(this.view.add_question)
-  $('#add_question').addEventListener('click', this.view.add_question);
+  $('#questionbtn').click(this.view.add_question);
 }
 
 //Application JS
