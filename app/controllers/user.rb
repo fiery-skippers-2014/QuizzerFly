@@ -58,7 +58,7 @@ end
 
 
 
-## DESTROY YOUR ACCOUNT
+# SEND TO PAGE TO DELETE ACCOUNT
 get '/users/:user_id/delete' do
   if current_user.id == params[:user_id]
     erb :'user/delete'
@@ -66,7 +66,7 @@ get '/users/:user_id/delete' do
     redirect '/'
   end
 end
-
+## DESTROY YOUR ACCOUNT
 post '/users/:user_id/delete' do
   current_user.destroy
   session[:id] = nil

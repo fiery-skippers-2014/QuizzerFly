@@ -1,0 +1,37 @@
+<h2>Create A New Survey</h2>
+<hr>
+
+<div>
+  <form action="/surveys/create" method="POST" class="create_survey">
+    <label for="title">Title:<br>
+      <input type="text" name="title" placeholder="Survey Title">
+    </label>
+    <label for="description">Description:
+      <input type="text" name="description" placeholder="Survey Description">
+    </label>
+      <input type="submit" class='bttn-blue' value="Create Survey">
+  </form>
+</div>
+
+<br><hr><br>
+
+<!-- Making Questions -->
+<!-- surveys/:id/questions/new -->
+<div id="question_inputs">
+  <form action="#" method="post">
+  <div id = "questions">
+    <div class="question" id="question#">
+      <div id="questionInput">
+        <input type="text" name="question[0]" placeholder="Question"><br>
+      </div>
+      <div id="answerInput">
+        <input type="text" name="question[0][answer[0]"] placeholder="Answer"><br>
+        <input type="text" name="question[0][answer[0]"] placeholder="Answer"><br>
+      </div>
+        <span class="center"><a href="#" id="addAnswerBtn"><button type="button">Add Answer</button></a> <br><br></span>
+        <center><a href="#" id="addQuestionBtn"><button type="button">Add Question</button></a></center>
+     </div> 
+  </div> 
+  <input type="submit" class='bttn-blue' value="Submit"> <!-- IS THIS NECESSARY? USING ABOVE FORM'S BUTTON TO CREATE SURVEY -->
+  </form>
+</div>

@@ -264,6 +264,19 @@ input, textarea, select {
   float: right;
   color: white;
 }
+
+.bttn-blue {
+  font-family:Verdana;
+  text-transform: uppercase;
+  width: 100px;
+  font-size: 12px;
+  background-color: #58a4d3;
+  /*float: right;*/
+  color: white;
+}
+
+
+
 .bttn-green {
   width: 100px;
   font-size: 12px;

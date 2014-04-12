@@ -1,0 +1,38 @@
+<div id="content" class="main container-mid">
+  <h1><a href="/surveys/<%= @survey.id %>"><%= @survey.title %></a></h1>
+  <h2><%= @survey.description %></h2>
+
+
+  <!-- IF THIS SURVEY HAS QUESTIONS TO ANSWER.. -->
+  <% if @survey.questions.to_a != [] %>
+  <ol>
+
+
+    <form action ='/surveys/<%=@survey.id %>/completed_surveys/new %>' method='post'>
+    <% @survey.questions.each_with_index do |question, index| %>
+
+        <!-- Partial to hold html inputs in form to make params for completed survey -->
+        <%= index %>. Question: <%= question.id %>
+        <br>Partial to hold html inputs in form to make params for completed survey. Question
+        <hr>
+
+    <% end %>
+    <div>
+      <!-- Allow only logged in people to submit survey. Submission done this way? -->
+      <% if @logged_in_user != nil %>
+        <label for="email">Email Address:
+          <input type='text' name='email' placeholder='E-Mail Address' required>
+       </label>
+      <% else %>
+        <input type='hidden' name='email' value='<%= current_user.email %>'>
+      <% end %>
+      <input type='submit' class='bttn-blue' value='Submit Your Answers'>
+    </div>
+    </form>
+
+
+  </ol>
+  <% else %>
+    <center><p>This survey has no questions.</p></center>
+  <% end %>
+</div>
