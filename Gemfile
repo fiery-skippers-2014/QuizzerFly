@@ -23,9 +23,10 @@ group :test do
   gem 'rack-test'
   gem 'rspec'
   gem 'capybara'
+  gem 'database_cleaner', github: 'bmabey/database_cleaner' # cucumber's utility gem
 end
 
 group :test, :development do
-  gem 'factory_girl'
+  gem 'factory_girl', '~> 2.0.0'
   gem 'faker'
 end
