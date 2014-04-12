@@ -3,16 +3,18 @@
 
 # Not necessary since we have create survey partial on profile
 # Send to create_survey form
-get '/surveys/new' do
-  #erb :'survey/create_survey'
+post '/surveys/new' do
+  puts params
+  # @survey = Survey.create(params)
+  redirect "/"
 end
 
 
-# Create survey from create_survey form
-post '/surveys/create' do
-  @survey = Survey.create(params)
-  redirect "/surveys/#{@survey.id}"
-end
+# # Create survey from create_survey form
+# post '/surveys/create' do
+#   @survey = Survey.create(params)
+#   redirect "/surveys/#{@survey.id}"
+# end
 
 
 
