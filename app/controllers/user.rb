@@ -5,7 +5,6 @@ get '/users/:user_id' do
   if current_user
     @user = User.find(params[:user_id])
     @surveys = Survey.where(user_id: current_user.id).order("created_at DESC")
-    # @surveys = Survey.find(current_user.id)
     erb :'user/profile'
   else
     redirect "/"
