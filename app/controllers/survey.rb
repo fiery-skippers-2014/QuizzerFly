@@ -43,8 +43,19 @@ get '/surveys/:survey_id/result/new' do
   @survey = Survey.find(params[:survey_id])
   erb :'completed_surveys/take_survey'
 end
-# Create FILLED OUT SURVEY
+# Post FILLED OUT SURVEY info to database
 post '/surveys/:survey_id/result' do
   @survey = Survey.find(params[:survey_id])
   erb :'/survey/show_one'
 end
+
+
+# View the data results of a survey in a chart
+
+get '/surveys/:survey_id/data' do
+  @survey = Survey.find(params[:survey_id])
+  erb :'data_results'
+
+end
+
+
