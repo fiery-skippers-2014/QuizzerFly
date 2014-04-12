@@ -19,15 +19,12 @@ end
 
 
 
-# Show survey by survey id             # SHOW RESULT DATA??
+# Show survey by survey id
 get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
   erb :'/survey/show_one'
 end
-
-
-
 
 
 # Allow a user to delete their own survey then return to their profile
@@ -43,7 +40,7 @@ end
 # GO TO SURVEY FORM TO TAKE SURVEY
 get '/surveys/:survey_id/result/new' do
   @survey = Survey.find(params[:survey_id])
-  erb :'completed_surveys/take_survey'
+  erb :'/completed_surveys/take_survey'
 end
 # Post FILLED OUT SURVEY info to database
 post '/surveys/:survey_id/result' do
@@ -52,12 +49,11 @@ post '/surveys/:survey_id/result' do
 end
 
 
-# View the data results of a survey in a chart
 
+# View the data report from a survey:
 get '/surveys/:survey_id/data_report' do
   @survey = Survey.find(params[:survey_id])
-  erb :'data_report'
-
+  erb :'/data_report'
 end
 
 

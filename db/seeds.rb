@@ -3,5 +3,5 @@
 
   2.times do
     Survey.create :user_id => @this_user.id, :title => Faker::Commerce.color, :description => Faker::Company.bs
-  end 
+  end
 end
