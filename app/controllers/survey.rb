@@ -49,11 +49,14 @@ post '/surveys/:survey_id/result' do
 end
 
 
+## View the data report (results) from a survey: ####################
 
-# View the data report from a survey:
 get '/surveys/:survey_id/data_report' do
-  @survey = Survey.find(params[:survey_id])
   erb :'/data_report'
 end
 
+post '/surveys/:survey_id/data_report' do
+  @survey = Survey.find(params[:survey_id])
+  redirect '/'
+end
 

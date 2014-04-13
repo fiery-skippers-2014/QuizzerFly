@@ -1,4 +1,23 @@
-<!--this is where Erin's chart animation goes -->
+<script src="Chart.js"></script>
 
-<canvas id="myChart" width="400" height="400"></canvas>
+<!-- Survey Title -->
+<h1><%= @survey.title %></h1><br>
+<h3><%= @survey.description %></h3>
 
+  <!-- bullet points for questions -->
+  <ul>
+    <li><%= survey.id %>. <a href="/surveys/<%= survey.id %>"><%= survey.title %></a></li>
+  </ul>
+
+
+  <!-- pie graph displaying the answers/choices -->
+  <canvas id="myChart" width="400" height="400"></canvas>
+
+
+<% @results = [] %>
+<% @questions = @survey.questions %>
+<% @questions.each_with_index do |question, index| %>
+  <% question_id = questions.id %>
+  <% @results << question.choice %>
+  <%= @results.to_json %>
+<% end %>
