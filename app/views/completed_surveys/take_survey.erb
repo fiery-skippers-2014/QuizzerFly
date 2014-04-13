@@ -4,32 +4,33 @@
 
 
   <!-- IF THIS SURVEY HAS QUESTIONS TO ANSWER.. -->
-  <% if @survey.questions.to_a != [] %>
+  <% unless @survey.questions.to_a.empty? %>
   <ol>
 
-
-    <form action ='/surveys/<%=@survey.id %>/completed_surveys/new %>' method='post'>
+    <form action ='/surveys/<%=@survey.id %>/completed_surveys/new' method='post'>
     <% @survey.questions.each_with_index do |question, index| %>
 
         <!-- Partial to hold html inputs in form to make params for completed survey -->
-        <%= index %>. Question: <%= question.id %>
-        <br>Partial to hold html inputs in form to make params for completed survey. Question
-        <hr>
+        <%= index + 1 %>. Question: "<%= question.question_text %>"
+          <% for choice in question.choices %>
 
+            <input type="radio" name="question_<%= question.id %>" value="<%= choice.id %>"><%= choice.choice_text %><br>
+
+          <% end %>
+        <hr>
     <% end %>
     <div>
       <!-- Allow only logged in people to submit survey. Submission done this way? -->
-      <% if @logged_in_user != nil %>
+      <% unless @logged_in_user.nil? %>
         <label for="email">Email Address:
           <input type='text' name='email' placeholder='E-Mail Address' required>
        </label>
       <% else %>
-        <input type='hidden' name='email' value='<%= current_user.email %>'>
+        <input type='hidden' name='email'>
       <% end %>
-      <input type='submit' class='bttn-blue' value='Submit Your Answers'>
+      <input type='submit' class='bttn-blue' value='Submit'>
     </div>
     </form>
-
 
   </ol>
   <% else %>

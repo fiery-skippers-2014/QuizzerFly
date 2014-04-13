@@ -1,6 +1,4 @@
 # -----------CREATE SURVEY
-
-
 # Not necessary since we have create survey partial on profile
 # Send to create_survey form
 
@@ -39,4 +37,16 @@ end
 post '/surveys/:survey_id/result' do
   @survey = Survey.find(params[:survey_id])
   erb :'/survey/show_one'
+end
+
+
+
+post '/surveys/:survey_id/completed_surveys/new' do
+  selected_choices = params.select { |key| key.to_s.start_with?("question_") }
+
+  selected_choices.each do |question, choice|
+    Result.create({ user_id: session[:user_id], choice_id: choice })
+  end
+  CompletedSurvey.create({ user_id: session[:user_id], survey_id: params[:survey_id] })
+  redirect "/surveys/#{params[:survey_id]}"
 end
