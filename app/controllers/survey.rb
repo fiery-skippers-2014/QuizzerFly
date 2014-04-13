@@ -38,23 +38,32 @@ end
 # GO TO SURVEY FORM TO TAKE SURVEY
 get '/surveys/:survey_id/result/new' do
   @survey = Survey.find(params[:survey_id])
-  erb :'completed_surveys/take_survey'
+  erb :'/completed_surveys/take_survey'
 end
 
 # Create FILLED OUT SURVEY
+
 post '/surveys/:survey_id/result' do
   @survey = Survey.find(params[:survey_id])
   erb :'/survey/show_one'
 end
 
+# TO DO combine data_report erb into show_one erb once everything is working!
 
+################ View the data report (results) from a survey: ####################
+get '/surveys/:survey_id/data_report' do
+  @survey = Survey.find(params[:survey_id])
+  erb :'/results/data_report'
+end
+##################The above is Erin's Route so she can find it again################
 
 post '/surveys/:survey_id/completed_surveys/new' do
   selected_choices = params.select { |key| key.to_s.start_with?("question_") }
-  
+
   selected_choices.each do |question, choice|
     Result.create({ user_id: session[:user_id], choice_id: choice })
   end
   CompletedSurvey.create({ user_id: session[:user_id], survey_id: params[:survey_id] })
   redirect "/surveys/#{params[:survey_id]}"
 end
+

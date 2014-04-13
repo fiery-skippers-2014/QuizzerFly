@@ -1,9 +1,9 @@
 <!-- ISOLATED PAGE WHICH CAN HOLD A SURVEY'S STATS -->
 <div id="content" class="main container-mid">
   <h3>Post ID: <%= @survey.id %></h3>
-  
+
   <div class="survey">
-    <%= @survey.title %> by <a href="/users/<%= @user.id %>"><%= @user.name %></a> | 
+    <%= @survey.title %> by <a href="/users/<%= @user.id %>"><%= @user.name %></a> |
     <span class="time"><%= @survey.created_at.strftime("%H minutes and %M seconds ago") %></span><br>
     <br>"<%= @survey.description %>"<br>
 
@@ -11,8 +11,11 @@
     <% if @logged_in_user == @user %>
       <span><a href="/surveys/<%= @survey.id %>/delete"><button type="button">Delete</button></a></span>
     <% else %>
-      <br><center><a href="/surveys/<%= @survey.id %>/result/new"><button type="button" class='bttn-blue'>Take Survey</button></a></center>
+      <br><center><a href="/surveys/<%= @survey.id %>/result/new"><button type="button" class='bttn-blue'>Take Survey</button></a> | <a href="/surveys/<%= @survey.id %>/data_report"><button type="button" class='bttn-blue'>See Results</button></a></center>
     <% end %>
+
+<!-- TODO after everything works, add the data_report.erb file into here instead of just linking to it -->
+
 
   </div>
 </div>
