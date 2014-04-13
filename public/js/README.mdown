@@ -1,8 +1,0 @@
-Erin's sources for creating charts and stuff:
----------------------------------------------
-
-* <a href=http://www.chartjs.org/docs/">Chart.js</a>   
-* <a href="http://www.w3schools.com/tags/ref_canvas.asp">HTML canvas ref</a>  
-* <a href="http://www.w3schools.com/html/html5_canvas.asp"> HTML5 canvas </a>  
-* <a href="http://en.wikipedia.org/wiki/Canvas_element">Wiki canvas element</a>  
-* <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Canvas_tutorial">MDN canvas tutorial</a>  
