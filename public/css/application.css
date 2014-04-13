@@ -6,7 +6,7 @@ body {
   background-image: url('http://i.imgur.com/DPpV5Qu.png');
   /*background-image: url('http://i.imgur.com/T4bGNDL.jpg');*/
   background-attachment:fixed;
-  background-position:center; 
+  background-position:center;
   background-size: 100%;
   /*background-repeat:fixed;*/
   background-color: #e5ded5;
@@ -152,6 +152,9 @@ nav ul li {
   font-family: Verdana;
 }
 
+.results_questions {
+  list-style: none;
+}
 
 /* END OF OUR CSS */
 

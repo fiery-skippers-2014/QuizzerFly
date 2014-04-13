@@ -4,15 +4,15 @@
   <!-- Survey Title -->
   <h1><%= @survey.title %></h1>
   <h3><%= @survey.description %></h3>
+  <a href="/surveys/<%= @survey.id %>">Return to this survey</a>
 
     <!-- bullet points for questions -->
-    <ul>
+    <ul class="results_questions">
       <% @survey.questions.each do |question| %>
-      <li><%= question.id %>. <%= question.question_text %></li>
+      <li><%= question.id %>. <%= question.question_text %><br>
+        Answers:</li>
+      <canvas id="myChart" width="200" height="200"></canvas>
       <% end %>
     </ul>
-    <!-- pie graph displaying the answers/choices -->
-    <canvas id="myChart" width="400" height="400"></canvas>
-
 </div>
 
