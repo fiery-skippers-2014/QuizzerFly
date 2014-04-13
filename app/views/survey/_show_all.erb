@@ -1,6 +1,6 @@
-<% if @surveys %>
+<% if surveys %>
 
-  <% @surveys.to_a.each do |survey| %>
+  <% surveys.each do |survey| %>
     <div class="post">
       <%= survey.id %>. <a href="/surveys/<%= survey.id %>"><%= survey.title %></a> by survey.user.name <span><a href="/surveys/<%= survey.id %>/result/new"><button type="button" class="bttn-blue">Take Survey</button></a></span>
 
@@ -9,6 +9,5 @@
       "<%= survey.description %>"<br>
     </div>
   <% end %>
-<% end %>
 
-show surveys partial
+<% end %>
