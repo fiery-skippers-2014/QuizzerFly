@@ -15,7 +15,7 @@
 
 
 <!-- TESTING -->
-    <!-- Print all the answers -->
+    <!-- Print all the answers to make sure we can access them-->
     <ul>
       <% @survey.choices.each do |choice| %>
       <li><%= choice.id %>. <%= choice.choice_text %></li>
