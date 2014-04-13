@@ -1,6 +1,5 @@
 $(function () {
-    var ctx = document.getElementById("myChart").getContext("2d"); //Get the context of the canvas element we want to select
-
+    var ctx = document.getElementById("myChart").getContext("2d");  //Get the context of the canvas element we want to select
     // Call a method of the name of the chart we want to create. Pass in the data for that chart type, and the options for that chart as parameters. Chart.js will merge the options you pass in with the default options for that chart type.
     // Value is the number of users who chose that specific answer
     // Chart.js will total the numbers and automatically calculate the proportion of each slice on the chart

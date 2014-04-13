@@ -156,6 +156,11 @@ nav ul li {
   list-style: none;
 }
 
+#myChart {
+  border: 1px solid gray;
+  margin: 3px;
+}
+
 /* END OF OUR CSS */
 
 

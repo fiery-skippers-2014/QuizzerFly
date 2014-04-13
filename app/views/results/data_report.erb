@@ -1,17 +1,31 @@
 <div id="content" class="main container-mid">
   <script src="Chart.js"></script>
 
-  <!-- Survey Title -->
   <h1><%= @survey.title %></h1>
   <h3><%= @survey.description %></h3>
   <a href="/surveys/<%= @survey.id %>">Return to this survey</a>
 
-    <!-- bullet points for questions -->
     <ul class="results_questions">
       <% @survey.questions.each do |question| %>
       <li><%= question.id %>. <%= question.question_text %><br>
         Answers:</li>
       <canvas id="myChart" width="200" height="200"></canvas>
+      <% end %>
+    </ul>
+
+
+<!-- TESTING -->
+    <!-- Print all the answers -->
+    <ul>
+      <% @survey.choices.each do |choice| %>
+      <li><%= choice.id %>. <%= choice.choice_text %></li>
+      <% end %>
+    </ul>
+
+    <!-- Print the number of users who clicked on each answer -->
+    <ul>
+      <% @survey.choices.each do |choice| %>
+      <li><%= choice.id %>. <%= choice.choice_text %></li>
       <% end %>
     </ul>
 </div>
