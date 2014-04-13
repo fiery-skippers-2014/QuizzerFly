@@ -1,14 +1,18 @@
-<script src="Chart.js"></script>
+<div id="content" class="main container-mid">
+  <script src="Chart.js"></script>
 
-<!-- Survey Title -->
-<h1><%= @survey.title %></h1><br>
-<h3><%= @survey.description %></h3>
+  <!-- Survey Title -->
+  <h1><%= @survey.title %></h1>
+  <h3><%= @survey.description %></h3>
 
-  <!-- bullet points for questions -->
-  <ul>
-    <li><%= @survey.id %>. <a href="/surveys/<%= @survey.id %>"><%= @survey.title %></a></li>
-  </ul>
-  <!-- pie graph displaying the answers/choices -->
-  <canvas id="myChart" width="400" height="400"></canvas>
+    <!-- bullet points for questions -->
+    <ul>
+      <% @survey.questions.each do |question| %>
+      <li><%= question.id %>. <%= question.question_text %></li>
+      <% end %>
+    </ul>
+    <!-- pie graph displaying the answers/choices -->
+    <canvas id="myChart" width="400" height="400"></canvas>
 
+</div>
 
