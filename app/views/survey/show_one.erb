@@ -11,10 +11,27 @@
     <% if @logged_in_user == @user %>
       <span><a href="/surveys/<%= @survey.id %>/delete"><button type="button">Delete</button></a></span>
     <% else %>
-      <br><center><a href="/surveys/<%= @survey.id %>/result/new"><button type="button" class='bttn-blue'>Take Survey</button></a> | <a href="/surveys/<%= @survey.id %>/data_report"><button type="button" class='bttn-blue'>See Results</button></a></center>
+      <br><center><a href="/surveys/<%= @survey.id %>/result/new"><button type="button" class='bttn-blue'>Take Survey</button></a></center>
     <% end %>
 
 <!-- TODO after everything works, add the data_report.erb file into here instead of just linking to it -->
+  <h3>Results:</h3>
+
+   <ul class="results_questions">
+      <% @survey.questions.each do |question| %>
+      <li><%= question.id %>. <%= question.question_text %></li>
+        <ul class="results_questions">
+          <% @survey.choices.each do |choice| %>
+            <% if choice.id <= 4 %>
+            <li><%= choice.id %>. <%= choice.choice_text %></li>
+              <% @survey.choices.each do |choice| %>
+                <% choice.delete %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
 
 
   </div>

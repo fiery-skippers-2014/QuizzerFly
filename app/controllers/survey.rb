@@ -12,7 +12,8 @@ post '/surveys/new' do
   redirect "/"
 end
 
-# Show survey by survey id
+# Show survey results by survey id
+
 get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
@@ -40,14 +41,12 @@ post '/surveys/:survey_id/result' do
   erb :'/survey/show_one'
 end
 
-# TO DO combine data_report erb into show_one erb once everything is working!
+# View the data report (results) from a survey:
+# get '/surveys/:survey_id/data_report' do
+#   @survey = Survey.find(params[:survey_id])
+#   erb :'/results/data_report'
+# end
 
-################ View the data report (results) from a survey: ####################
-get '/surveys/:survey_id/data_report' do
-  @survey = Survey.find(params[:survey_id])
-  erb :'/results/data_report'
-end
-##################The above is Erin's Route so she can find it again################
 
 post '/surveys/:survey_id/completed_surveys/new' do
   selected_choices = params.select { |key| key.to_s.start_with?("question_") }
