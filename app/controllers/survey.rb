@@ -52,7 +52,8 @@ end
 ## View the data report (results) from a survey: ####################
 
 get '/surveys/:survey_id/data_report' do
-  erb :'/data_report'
+  @survey = Survey.find(params[:survey_id])
+  erb :'/results/data_report'
 end
 
 post '/surveys/:survey_id/data_report' do
