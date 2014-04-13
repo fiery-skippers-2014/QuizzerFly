@@ -12,15 +12,15 @@ post '/surveys/new' do
   redirect "/"
 end
 
-# Show survey results by survey id ###########################
+# Show survey results by survey id #
 
 get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
-
+  @result = Result.find(@user.id)
   erb :'/survey/show_one'
 end
-##############################################################
+
 
 # Allow a user to delete their own survey then return to their profile
 get '/surveys/:survey_id/delete' do
