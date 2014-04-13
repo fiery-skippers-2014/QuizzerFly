@@ -4,8 +4,13 @@
 # Not necessary since we have create survey partial on profile
 # Send to create_survey form
 post '/surveys/new' do
-  puts params
-  # @survey = Survey.create(params)
+ @survey = Survey.create(
+  title: params[:title],
+  user_id: current_user.id,
+  description: params[:description])
+ @survey.save
+ puts params
+ @survey.build(params)
   redirect "/"
 end
 
