@@ -14,25 +14,8 @@
       <br><center><a href="/surveys/<%= @survey.id %>/result/new"><button type="button" class='bttn-blue'>Take Survey</button></a></center>
     <% end %>
 
-<!-- TODO after everything works, add the data_report.erb file into here instead of just linking to it -->
   <h3>Results:</h3>
-
-   <ul class="results_questions">
-      <% @survey.questions.each do |question| %>
-      <li><%= question.id %>. <%= question.question_text %></li>
-        <ul class="results_questions">
-          <% @survey.choices.each do |choice| %>
-            <% if choice.id <= 4 %>
-            <li><%= choice.id %>. <%= choice.choice_text %></li>
-              <% @survey.choices.each do |choice| %>
-                <% choice.delete %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </ul>
-      <% end %>
-    </ul>
-
+  <!-- this is where the results list will go -->
 
   </div>
 </div>

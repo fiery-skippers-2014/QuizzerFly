@@ -12,13 +12,14 @@ post '/surveys/new' do
   redirect "/"
 end
 
-# Show survey results by survey id
+# Show survey results by survey id ###########################
 
 get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
   erb :'/survey/show_one'
 end
+##############################################################
 
 # Allow a user to delete their own survey then return to their profile
 get '/surveys/:survey_id/delete' do
@@ -40,13 +41,6 @@ post '/surveys/:survey_id/result' do
   @survey = Survey.find(params[:survey_id])
   erb :'/survey/show_one'
 end
-
-# View the data report (results) from a survey:
-# get '/surveys/:survey_id/data_report' do
-#   @survey = Survey.find(params[:survey_id])
-#   erb :'/results/data_report'
-# end
-
 
 post '/surveys/:survey_id/completed_surveys/new' do
   selected_choices = params.select { |key| key.to_s.start_with?("question_") }
