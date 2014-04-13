@@ -19,12 +19,18 @@ end
 
 
 
+
+
 # Show survey by survey id
 get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
   erb :'/survey/show_one'
 end
+
+
+
+
 
 
 
@@ -37,6 +43,12 @@ get '/surveys/:survey_id/delete' do
   @survey.destroy if current_user.id == @user.id
   redirect "/users/#{@user.id}"
 end
+
+
+
+
+
+
 
 
 

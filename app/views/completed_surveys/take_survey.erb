@@ -24,7 +24,7 @@
           <input type='text' name='email' placeholder='E-Mail Address' required>
        </label>
       <% else %>
-        <input type='hidden' name='email' value='<%= current_user.email %>'>
+        <input type='hidden' name='email'>
       <% end %>
       <input type='submit' class='bttn-blue' value='Submit Your Answers'>
     </div>
