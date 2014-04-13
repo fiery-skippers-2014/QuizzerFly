@@ -56,8 +56,4 @@ get '/surveys/:survey_id/data_report' do
   erb :'/results/data_report'
 end
 
-post '/surveys/:survey_id/data_report' do
-  @survey = Survey.find(params[:survey_id])
-  redirect '/'
-end
 
