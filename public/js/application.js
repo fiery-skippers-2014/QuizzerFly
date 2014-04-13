@@ -29,7 +29,6 @@ function View() {
     console.log("This is the number of children for current choice inputs: " + $(this).prev().children('input').length)
     var next_input_count = $(this).prev().children('input').length + 1
     $node = '<input type="text" name="question1choice' + next_input_count + '" placeholder="Choice"><br>'
-
      currentChoiceInputs.append($node);
   }
 
