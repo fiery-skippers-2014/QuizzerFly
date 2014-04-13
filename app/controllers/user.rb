@@ -2,13 +2,12 @@
 
 # Show User page
 get '/users/:user_id' do
-  if current_user
-    @user = User.find(params[:user_id])
-    @surveys = Survey.where(user_id: current_user.id).order("created_at DESC")
-    erb :'user/profile'
-  else
-    redirect "/"
-  end
+  @logged_in_user = current_user
+  @user = User.find(params[:user_id])
+  @users_surveys = Survey.where(user_id: @user.id)
+  @taken_ids = CompletedSurvey.where(user: @user.id).order("created_at DESC")
+  @completed_surveys = Survey.where(user_id: @taken_ids)
+  erb :'user/profile'
 end
 
 

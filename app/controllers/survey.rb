@@ -28,6 +28,8 @@ get '/surveys/:survey_id/delete' do
   redirect "/users/#{@user.id}"
 end
 
+
+
 # GO TO SURVEY FORM TO TAKE SURVEY
 get '/surveys/:survey_id/result/new' do
   @survey = Survey.find(params[:survey_id])
@@ -40,12 +42,14 @@ post '/surveys/:survey_id/result' do
   erb :'/survey/show_one'
 end
 
+
+
 post '/surveys/:survey_id/completed_surveys/new' do
   selected_choices = params.select { |key| key.to_s.start_with?("question_") }
   
   selected_choices.each do |question, choice|
-    puts Result.create({ user_id: session[:user_id], choice_id: choice })
+    Result.create({ user_id: session[:user_id], choice_id: choice })
   end
-
   CompletedSurvey.create({ user_id: session[:user_id], survey_id: params[:survey_id] })
+  redirect "/surveys/#{params[:survey_id]}"
 end
