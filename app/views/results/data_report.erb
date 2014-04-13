@@ -23,10 +23,7 @@
     </ul>
 
     <!-- Print the number of users who clicked on each answer -->
-    <ul>
-      <% @survey.choices.each do |choice| %>
-      <li><%= choice.id %>. <%= choice.choice_text %></li>
-      <% end %>
-    </ul>
+
+    <!-- Query how many users chose a particular choice and pass that number as data to the pie chart -->
 </div>
 
