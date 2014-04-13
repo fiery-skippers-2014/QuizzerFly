@@ -15,7 +15,33 @@
     <% end %>
 
   <h3>Results:</h3>
-  <!-- this is where the results list will go -->
+    <ul class="results">
+          <% @survey.questions.each do |question| %>
+          <li><%= question.id %>. <%= question.question_text %></li>
+
+            <ul class="results">
+              <% @survey.choices.each do |choice| %>
+                <% if choice.question.id == question.id %>
+                  <li><%= choice.id %>. <%= choice.choice_text %>
+                    <% @user.results.each do |result| %>
+                    <% if result.choice_id == choice.id %> &nbsp;
+                      Picked by user: <%= result.user_id %>!
+                  </li>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+        </ul>
+
+        <% @user.results.each do |result| %>
+        <% result.user_id %> <%result.choice_id %><br>
+        <% end %>
 
   </div>
 </div>
+
+<!-- How many users chose a specific choice? -->
+<!-- a Result belongs to a user and a choice -->
+

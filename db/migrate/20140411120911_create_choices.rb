@@ -3,7 +3,6 @@ class CreateChoices< ActiveRecord::Migration
     create_table :choices do |t|
       t.belongs_to :question
       t.string :choice_text
-
       t.timestamps
     end
   end
