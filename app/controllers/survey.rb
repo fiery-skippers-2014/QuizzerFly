@@ -1,22 +1,16 @@
 # -----------CREATE SURVEY
 # Not necessary since we have create survey partial on profile
 # Send to create_survey form
+
 post '/surveys/new' do
  @survey = Survey.create(
   title: params[:title],
   user_id: current_user.id,
   description: params[:description])
  @survey.save
- puts params
  @survey.build(params)
   redirect "/"
 end
-
-# # Create survey from create_survey form
-# post '/surveys/create' do
-#   @survey = Survey.create(params)
-#   redirect "/surveys/#{@survey.id}"
-# end
 
 # Show survey by survey id
 get "/surveys/:survey_id" do
@@ -32,8 +26,6 @@ get '/surveys/:survey_id/delete' do
   @survey.destroy if current_user.id == @user.id
   redirect "/users/#{@user.id}"
 end
-
-
 
 # GO TO SURVEY FORM TO TAKE SURVEY
 get '/surveys/:survey_id/result/new' do

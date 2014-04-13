@@ -15,21 +15,17 @@ class Survey < ActiveRecord::Base
   end
 
   def params_to_question_array(params)
-    counter = 1
-    questions = []
-    puts params.has_key?("question#{counter}")
-    while params.has_key?("question#{counter}")
-      puts counter
-        hash = params.select { |k, v|
+    question_counter = 1
+    questions_array = []
+    while params.has_key?("question#{question_counter}")
+        questions_hash = params.select { |k, v|
         question_array = []
-        if k =~ /question#{counter}/;
-         question_array << v
-        end
+         question_array << v if k =~ /question#{question_counter}/
       }
-      questions << hash.values
-      counter +=1
+      questions_array << questions_hash.values
+      question_counter +=1
     end
-    questions
+    questions_array
   end
 
 end
