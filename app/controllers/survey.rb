@@ -21,7 +21,7 @@ get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
   if CompletedSurvey.find_by_survey_id(@survey.id)
-    @result = Result.find(@user.id) ## <-- not going to work. this route is necessary for profile and index views which dont have results
+    @result = Result.find(@user.id)
   end
   erb :'/survey/show_one'
 end

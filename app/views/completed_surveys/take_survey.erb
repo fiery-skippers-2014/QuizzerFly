@@ -8,7 +8,7 @@
     <form action ='/surveys/<%=@survey.id %>/completed_surveys/new' method='post'>
       <% @survey.questions.each_with_index do |question, index| %>
         <div class="question">
-          <!-- Partial to hold html inputs in form to make params for completed survey -->
+
           <%= index + 1 %>. "<%= question.question_text %>"
 
             <% for choice in question.choices %>
@@ -24,7 +24,7 @@
       <% end %>
 
       <div>
-        <!-- Allow only logged in people to submit survey. Submission done this way? -->
+
         <% unless @logged_in_user.nil? %>
           <label for="email">Email Address:
             <input type='text' name='email' placeholder='E-Mail Address' required>
