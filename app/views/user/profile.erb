@@ -18,21 +18,20 @@
   <div class="container-mid">
     <% if @logged_in_user %>
       <% if @user.id == @logged_in_user.id %>
-        <!-- This user can create their own survey -->
         <%= erb :'survey/_create' %>
       <% end %>
     <% end %>
 
     <br><br><br>
 
-    <!-- This User's surveys -->
+
     <h3><%= @user.name %> has created <%= @users_surveys.count %> Survey(s)</h3>
     <hr>
     <%= erb :'survey/_show_all', :layout => false, :locals => {:surveys => @users_surveys}  %>
 
     <br><br>
 
-    <!-- Survey's this user has taken -->
+
     <h3><%= @user.name %> has Taken <%= @completed_surveys.count %> Surveys</h3>
     <hr>
     <%= erb :'survey/_show_all', :layout => false, :locals => {:surveys => @completed_surveys}  %>
