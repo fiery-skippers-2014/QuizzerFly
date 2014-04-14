@@ -14,8 +14,6 @@
   end
 end
 
-SeededUser.create(:user_name => "Alexandra", :user_email => "answart@sbcglobal.net", :user_password_hash => "password")
-
 SeededUser.create(:user_name => "Purple Dragon", :user_email => "charlesarcinega@gmail.com", :user_password_hash => "password")
 
 SeededUser.create(:user_name => "Jen", :user_email => "jrygh00@gmail.com", :user_password_hash => "password")

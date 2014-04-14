@@ -4,7 +4,7 @@
 
   ID: <span class="indented"><%= @user.id %></span><br>
   User: <span class="indented"><%= @user.name %></span><br>
-  Created: <span class="indented"><%= @user.created_at %></span><br>
-  Last Updated: <span class="indented"><%= @user.updated_at %></span><br>
+  Created: <span class="indented"><%= @user.created_at.strftime("%b %d, %y") %></span><br>
+  Last Updated: <span class="indented"><%= @user.updated_at.strftime("%b %d, %y") %></span><br>
   Email: <span class="indented"><%= @user.email %></span><br>
 </div>
