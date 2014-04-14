@@ -20,4 +20,10 @@ class User < ActiveRecord::Base
   include Gravtastic
 
   is_gravtastic!
+
+  def validate_password
+    if self[:password_hash] != @password_salt
+      errors.add(:password, 'is incorrect!')
+    end
+  end
 end

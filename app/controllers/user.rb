@@ -27,6 +27,7 @@ post '/register' do
     password_salt: password_salt
   )
   if @user.save
+    flash[:success] = "Welcome to QuizzerFly!"
     session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
   else
@@ -59,6 +60,7 @@ put '/users/:user_id/update_account' do
     password_salt: password_salt
   )
   if @user.save
+    flash[:success] = "Profile updated"
     redirect "/users/#{@user.id}"
   else
     @errors = @user.errors.full_messages
@@ -73,16 +75,23 @@ end
 
 # SEND TO PAGE TO DELETE ACCOUNT
 get '/users/:user_id/delete' do
-  if current_user.id == params[:user_id]
-    erb :'user/delete'
+  if current_user
+    if current_user.id == params[:user_id].to_i
+      current_user.destroy
+      session[:user_id] = nil
+      flash[:success] = "You just destroyed yourself! ='("
+      redirect "/"
+    end
   else
-    redirect '/'
+    flash[:error] = "You cannot delete an account which is not yours!"
+    redirect "/"
   end
 end
-## DESTROY YOUR ACCOUNT
-post '/users/:user_id/delete' do
-  current_user.destroy
-  session[:id] = nil
-  redirect '/'
-end
+## DESTROY YOUR SESSION
+# post '/users/:user_id/delete' do
+#   current_user.destroy
+#   session[:id] = nil
+#   flash[:success] = "You just destroyed yourself! ='("
+#   redirect '/'
+# end
 
