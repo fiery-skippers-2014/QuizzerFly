@@ -1,43 +1,47 @@
-<!-- ISOLATED PAGE WHICH CAN HOLD A SURVEY'S STATS -->
 <div id="content" class="main container-mid">
   <h3>Post ID: <%= @survey.id %></h3>
 
   <div class="survey">
+
     <%= @survey.title %> by <a href="/users/<%= @user.id %>"><%= @user.name %></a> |
     <span class="time"><%= @survey.created_at.strftime("%H minutes and %M seconds ago") %></span><br>
     <br>"<%= @survey.description %>"<br>
 
-
     <% if @logged_in_user == @user %>
       <span><a href="/surveys/<%= @survey.id %>/delete"><button type="button">Delete</button></a></span>
     <% else %>
-      <br><center><a href="/surveys/<%= @survey.id %>/result/new"><button type="button" class='bttn-blue'>Take Survey</button></a></center>
+      <br><center><a href="/surveys/<%= @survey.id %>/result/new"><button type="button" id="bttn" class="blue">Take Survey</button></a></center>
     <% end %>
 
-  <h3>Results:</h3>
-    <ul class="results">
-          <% @survey.questions.each do |question| %>
-          <li><%= question.id %>. <%= question.question_text %></li>
+    <h3>Results:</h3>
+      <ul class="results">
 
-            <ul class="results">
-              <% @survey.choices.each do |choice| %>
-                <% if choice.question.id == question.id %>
-                  <li><%= choice.id %>. <%= choice.choice_text %>
-                    <% @user.results.each do |result| %>
+        <% @survey.questions.each do |question| %>
+          <li><%= question.id %>. <%= question.question_text %></li>
+          <ul class="results">
+
+            <% @survey.choices.each do |choice| %>
+              <% if choice.question.id == question.id %>
+
+                <li><%= choice.id %>. <%= choice.choice_text %>
+                  <% @user.results.each do |result| %>
                     <% if result.choice_id == choice.id %> &nbsp;
-                      Picked by user: <%= result.user_id %>!
-                  </li>
-                    <% end %>
-                  <% end %>
+                      Picked by user: <%= result.user_id %>!   
+                </li>
+                
+                <% end %>
                 <% end %>
               <% end %>
-            </ul>
-          <% end %>
-        </ul>
+            <% end %>
 
-        <% @user.results.each do |result| %>
-        <% result.user_id %> <%result.choice_id %><br>
+          </ul>
         <% end %>
+      </ul>
+
+      <% @user.results.each do |result| %>
+      <% result.user_id %> <%result.choice_id %><br>
+
+    <% end %>
 
   </div>
 </div>

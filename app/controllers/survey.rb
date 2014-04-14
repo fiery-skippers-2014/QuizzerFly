@@ -3,20 +3,24 @@
 # Send to create_survey form
 
 post '/surveys/new' do
- @survey = Survey.create(
-  title: params[:title],
-  user_id: current_user.id,
-  description: params[:description])
- @survey.save
- @survey.build(params)
-  redirect "/"
+  @survey = Survey.create(
+    title: params[:title],
+    user_id: current_user.id,
+    description: params[:description]
+  )
+  @survey.save
+  @survey.build(params)
+  flash[:success] = "Survey created!"
+  redirect "/users/#{@survey.user_id}"
 end
 
 # Show survey results by survey id #
 get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
-  @result = Result.find(@user.id)
+  if CompletedSurvey.find_by_survey_id(@survey.id)
+    @result = Result.find(@user.id) ## <-- not going to work. this route is necessary for profile and index views which dont have results
+  end
   erb :'/survey/show_one'
 end
 
@@ -25,8 +29,13 @@ end
 get '/surveys/:survey_id/delete' do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
-  @survey.destroy if current_user.id == @user.id
-  redirect "/users/#{@user.id}"
+  if current_user.id == @user.id
+    @survey.destroy
+    flash[:success] = "Survey deleted"
+    redirect "/users/#{@user.id}"
+  else
+    flash[:error] = "Survey was not deleted"
+  end
 end
 
 # GO TO SURVEY FORM TO TAKE SURVEY
@@ -49,6 +58,7 @@ post '/surveys/:survey_id/completed_surveys/new' do
     Result.create({ user_id: session[:user_id], choice_id: choice })
   end
   CompletedSurvey.create({ user_id: session[:user_id], survey_id: params[:survey_id] })
+  flash[:success] = "You just finished a survey!"
   redirect "/surveys/#{params[:survey_id]}"
 end
 
