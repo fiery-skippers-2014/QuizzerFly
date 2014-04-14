@@ -13,7 +13,6 @@ post '/surveys/new' do
 end
 
 # Show survey results by survey id #
-
 get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
@@ -37,15 +36,15 @@ get '/surveys/:survey_id/result/new' do
 end
 
 # Create FILLED OUT SURVEY
-
 post '/surveys/:survey_id/result' do
   @survey = Survey.find(params[:survey_id])
   erb :'/survey/show_one'
 end
 
+# Create Results for each choice User chose in each question
+# Create a completed survey for the user
 post '/surveys/:survey_id/completed_surveys/new' do
   selected_choices = params.select { |key| key.to_s.start_with?("question_") }
-
   selected_choices.each do |question, choice|
     Result.create({ user_id: session[:user_id], choice_id: choice })
   end

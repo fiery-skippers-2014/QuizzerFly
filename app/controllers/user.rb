@@ -15,6 +15,7 @@ end
 get '/register' do
   erb :'user/register'
 end
+
 # SAVE USER INFO AS A NEW SESSION
 post '/register' do
   password_salt = BCrypt::Engine.generate_salt
@@ -49,8 +50,6 @@ end
 post 'users/:user_id/update' do
   redirect '/'
 end
-
-
 
 
 
