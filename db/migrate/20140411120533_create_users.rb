@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.string :email
-      t.string :company, default: nil
+      t.string :company
       t.string :password_hash
       t.string :password_salt
 

@@ -54,10 +54,8 @@ put '/users/:user_id/update_account' do
   password_salt = BCrypt::Engine.generate_salt
   password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
   current_user.update_attributes(
-    email: params[:email],
     name: params[:name],
-    password_hash: password_hash,
-    password_salt: password_salt
+    company: params[:company]
   )
   if @user.save
     flash[:success] = "Profile updated"

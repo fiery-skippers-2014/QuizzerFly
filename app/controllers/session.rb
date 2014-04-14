@@ -10,7 +10,7 @@ end
 post '/sessions/new' do
   @user = User.find_by_email(params[:email])
   # @user.validate_password
-  if @user.password_hash == BCrypt::Engine.hash_secret(params[:password_hash], @user.password_salt)
+  if @user.password_hash == BCrypt::Engine.hash_secret(params[:password], @user.password_salt)
     session[:user_id] = @user.id
     flash[:success] = "Welcome back #{@user.name}!"
     redirect "/users/#{@user.id}"

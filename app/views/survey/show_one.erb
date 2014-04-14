@@ -10,7 +10,7 @@
     <% if @logged_in_user == @user %>
       <span><a href="/surveys/<%= @survey.id %>/delete"><button type="button">Delete</button></a></span>
     <% else %>
-      <br><center><a href="/surveys/<%= @survey.id %>/result/new"><button type="button" class='bttn-blue'>Take Survey</button></a></center>
+      <br><center><a href="/surveys/<%= @survey.id %>/result/new"><button type="button" id="bttn" class="blue">Take Survey</button></a></center>
     <% end %>
 
     <h3>Results:</h3>
