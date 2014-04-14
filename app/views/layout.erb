@@ -15,21 +15,21 @@
 <body>
   <%= erb :_header %>
 
-  <div class="container">
+      <div class="container">
 
-    <% if !flash.empty? %>
-      <% if flash[:success] %>
-        <div class="alert-success"><%= flash[:success] %></div>
-      <% end %>
-      <% if flash[:error] %>
-        <div class="alert-error"><%= flash[:error] %></div>
-      <% end %>
-    <% end %>
+        <% if !flash.empty? %>
+          <% if flash[:success] %>
+            <div class="alert-success"><%= flash[:success] %></div>
+          <% end %>
+          <% if flash[:error] %>
+            <div class="alert-error"><%= flash[:error] %></div>
+          <% end %>
+        <% end %>
 
-    <%= yield %>
+        <%= yield %>
 
-    <%= erb :_footer %>
-  </div>
-  
+        <%= erb :_footer %>
+      </div>
+
 </body>
 </html>

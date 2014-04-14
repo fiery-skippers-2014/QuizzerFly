@@ -4,6 +4,16 @@
 
 post '/surveys/new' do
   @survey = Survey.create(
+<<<<<<< HEAD
+    title: params[:title],
+    user_id: current_user.id,
+    description: params[:description]
+  )
+  @survey.save
+  @survey.build(params)
+  flash[:success] = "Survey created!"
+  redirect "/users/#{@survey.user_id}"
+=======
   title: params[:title],
   user_id: current_user.id,
   description: params[:description])
@@ -11,13 +21,16 @@ post '/surveys/new' do
   @survey.build(params)
   flash[:success] = "Survey created!"
   redirect "/surveys/#{@survey.id}"
+>>>>>>> master
 end
 
 # Show survey results by survey id #
 get "/surveys/:survey_id" do
   @survey = Survey.find(params[:survey_id])
   @user = User.find(@survey.user_id)
-  @result = Result.find(@user.id)
+  if CompletedSurvey.find_by_survey_id(@survey.id)
+    @result = Result.find(@user.id) ## <-- not going to work. this route is necessary for profile and index views which dont have results
+  end
   erb :'/survey/show_one'
 end
 
@@ -31,7 +44,11 @@ get '/surveys/:survey_id/delete' do
     flash[:success] = "Survey deleted"
     redirect "/users/#{@user.id}"
   else
+<<<<<<< HEAD
+    flash[:error] = "Survey was not deleted"
+=======
     flash[:success] = "Survey was not deleted"
+>>>>>>> master
   end
 end
 
