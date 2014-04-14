@@ -8,6 +8,7 @@ end
 
 # LOGIN ACTION FROM FORM
 post '/sessions/new' do
+
   if !User.where(email: params[:email]).empty?
     @user = User.find_by_email(params[:email])
     if @user.password_hash == BCrypt::Engine.hash_secret(params[:password], @user.password_salt)
@@ -20,6 +21,7 @@ post '/sessions/new' do
     end
   else
     flash[:error] = "We don't know anyone by that email"
+
     erb :'user/login'
   end
 end
