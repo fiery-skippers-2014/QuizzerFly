@@ -36,11 +36,8 @@ get '/surveys/:survey_id/delete' do
     flash[:success] = "Survey deleted"
     redirect "/users/#{@user.id}"
   else
-<<<<<<< HEAD
+
     flash[:error] = "Survey was not deleted"
-=======
-    flash[:success] = "Survey was not deleted"
->>>>>>> master
   end
 end
 
