@@ -203,6 +203,57 @@ nav ul li {
   text-indent:20px;
   font-weight: normal;
 }
+
+/* SEARCH BAR */
+#search_bar {
+  display: inline;
+}
+
+#search_form {
+  float: right;
+  display: inline;
+  width: 10%;
+}
+
+#search_bar input#input {
+  float: left;
+  display: inline;
+  width: 45%;
+}
+
+#search_bar label {
+  float: left;
+  display: inline;
+}
+
+
+/* GRAVATAR */
+
+.profile_box {
+  float: left;
+}
+
+#profile_image {
+  float: left;
+  border-radius: 10px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+/* SEARCH */
+
+.bubble {
+  background-color: white;
+  padding: 10px 20px 20px 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.float_left {
+  float: left;
+}
+
 /* END OF OUR CSS */
 
 

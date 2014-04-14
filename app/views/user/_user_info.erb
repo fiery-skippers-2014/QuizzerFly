@@ -1,4 +1,7 @@
 <div class="profile">
+  <% profile_image = @user.gravatar_url %>
+    <img id="profile_image" src="<%= profile_image %>">
+
   ID: <span class="indented"><%= @user.id %></span><br>
   User: <span class="indented"><%= @user.name %></span><br>
   Created: <span class="indented"><%= @user.created_at %></span><br>
