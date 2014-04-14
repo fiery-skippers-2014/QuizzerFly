@@ -4,7 +4,7 @@
 
 post '/surveys/new' do
   @survey = Survey.create(
-<<<<<<< HEAD
+
     title: params[:title],
     user_id: current_user.id,
     description: params[:description]
@@ -13,15 +13,7 @@ post '/surveys/new' do
   @survey.build(params)
   flash[:success] = "Survey created!"
   redirect "/users/#{@survey.user_id}"
-=======
-  title: params[:title],
-  user_id: current_user.id,
-  description: params[:description])
-  @survey.save
-  @survey.build(params)
-  flash[:success] = "Survey created!"
-  redirect "/surveys/#{@survey.id}"
->>>>>>> master
+
 end
 
 # Show survey results by survey id #
