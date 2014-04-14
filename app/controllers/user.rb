@@ -39,16 +39,26 @@ end
 
 
 # SEND LOGGED-IN USER TO UPDATE PAGE
-get 'users/:user_id/update' do
-  if current_user
+get '/users/:user_id/update_account' do
+  if current_user.id.to_i == params[:user_id].to_i
+    @user = User.find(params[:user_id])
     erb :'user/update'
   else
-    redirect '/'
+    redirect "/"
   end
 end
 # ALLOW USER TO EDIT/UPDATE THEIR INFO
-post 'users/:user_id/update' do
-  redirect '/'
+put '/users/:user_id/update_account' do
+  @user = User.find(params[:user_id])
+  password_salt = BCrypt::Engine.generate_salt
+  password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
+  current_user.update_attributes(
+    email: params[:email],
+    name: params[:name],
+    password_hash: password_hash,
+    password_salt: password_salt
+  )
+  redirect "/users/#{@user.id}"
 end
 
 
