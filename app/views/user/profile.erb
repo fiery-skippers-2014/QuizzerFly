@@ -1,30 +1,28 @@
 <div id="content" class="main container-mid">
 
-<!-- This User's MAIN INFORMATION -->
-
   <%= erb :'user/_user_info', :layout => false, :locals => {:user => @user}  %>
-
 
   <% if @logged_in_user == current_user %>
     <div class="indented">
       <span>
-      <a href="/users/<%= @user.id %>/delete"><button type="button" id="bttn" class="brown">Delete Account</button></a> 
+        <a href="/users/<%= @user.id %>/delete"><button type="button" id="bttn" class="brown">Delete Account</button></a> 
         <a href="/users/<%= @user.id %>/update_account"><button type="button" id="bttn" class="brown">Edit Account</button></a>
       </span>
     </div>
   <% end %>
 
-<br>
-<hr><hr>
-<br>
+  <br>
+  <hr><hr>
+  <br>
 
   <div class="main container-mid">
-  <% if @logged_in_user %>
-    <% if @user.id == @logged_in_user.id %>
-      <!-- This user can create their own survey -->
-      <%= erb :'survey/_create' %>
+    <% if @logged_in_user %>
+      <% if @user.id == @logged_in_user.id %>
+        <!-- This user can create their own survey -->
+        <%= erb :'survey/_create' %>
+      <% end %>
     <% end %>
-  <% end %>
+
     <br><br><br>
 
     <!-- This User's surveys -->

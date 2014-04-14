@@ -4,9 +4,9 @@
 get '/users/:user_id' do
   @logged_in_user = current_user
   @user = User.find(params[:user_id])
-  @users_surveys = Survey.where(user_id: @user.id)
-  @taken_ids = CompletedSurvey.where(user: @user.id).order("created_at DESC")
-  @completed_surveys = Survey.where(user_id: @taken_ids)
+  @users_surveys = Survey.where(user_id: @user.id).order("created_at DESC")
+  @taken_ids = CompletedSurvey.where(user: @user.id)
+  @completed_surveys = Survey.where(id: @taken_ids).order("created_at DESC")
   erb :'user/profile'
 end
 
@@ -58,7 +58,12 @@ put '/users/:user_id/update_account' do
     password_hash: password_hash,
     password_salt: password_salt
   )
-  redirect "/users/#{@user.id}"
+  if @user.save
+    redirect "/users/#{@user.id}"
+  else
+    @errors = @user.errors.full_messages
+    erb :'user/update'
+  end
 end
 
 

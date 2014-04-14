@@ -7,14 +7,14 @@
 
     <%= erb :'user/_user_info', :layout => false, :locals => {:user => @user}  %>
 
+    <%= erb :_error_messages %>
+
     <form action="/users/<%= @user.id %>/update_account" method="post" id="update">
 
       <input type="hidden" name="_method" value="put" />
 
       <input type="text" name="name" placeholder="Full name" required><br>
-
       <input type="email" name="email" placeholder="example@email.com" required><br>
-
       <input type="password" name="password" placeholder="6 or more characters"><br>
 
       <input type="submit" class="submit bttn-blue" value="Save Changes">
