@@ -4,6 +4,7 @@
   <nav class="main_nav">
     <ul>
       <li><a href="/">Home</a></li>
+        <li><a href="/search/">Search for User</a></li>
       <% if current_user %>
         <li><a href="/users/<%= @logged_in_user.id %>"><%= @logged_in_user.name %>'s Page</a></li>
         <li><a href="/logout">Logout</a></li>
