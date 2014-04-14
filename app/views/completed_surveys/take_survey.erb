@@ -2,39 +2,38 @@
   <h1><a href="/surveys/<%= @survey.id %>"><%= @survey.title %></a></h1>
   <h2><%= @survey.description %></h2>
 
-
-  <!-- IF THIS SURVEY HAS QUESTIONS TO ANSWER.. -->
   <% unless @survey.questions.to_a.empty? %>
   <ol>
 
     <form action ='/surveys/<%=@survey.id %>/completed_surveys/new' method='post'>
-    <% @survey.questions.each_with_index do |question, index| %>
-      <div class="question">
-        <!-- Partial to hold html inputs in form to make params for completed survey -->
-        <%= index + 1 %>. "<%= question.question_text %>"
+      <% @survey.questions.each_with_index do |question, index| %>
+        <div class="question">
+          <!-- Partial to hold html inputs in form to make params for completed survey -->
+          <%= index + 1 %>. "<%= question.question_text %>"
 
-          <% for choice in question.choices %>
+            <% for choice in question.choices %>
 
-            <span class="choice">
-              <input type="radio" class ="radio" name="question_<%= question.id %>" value="<%= choice.id %>" id="<%= question.id %>">
-              <label for="<%= question.id %>"><%= choice.choice_text %>
-              </label>
-            </span>
+              <span class="choice">
+                <input type="radio" class ="radio" name="question_<%= question.id %>" value="<%= choice.id %>" id="<%= question.id %>">
+                <label for="<%= question.id %>"><%= choice.choice_text %>
+                </label>
+              </span>
 
-          <% end %>
-      </div>
-    <% end %>
-    <div>
-      <!-- Allow only logged in people to submit survey. Submission done this way? -->
-      <% unless @logged_in_user.nil? %>
-        <label for="email">Email Address:
-          <input type='text' name='email' placeholder='E-Mail Address' required>
-       </label>
-      <% else %>
-        <input type='hidden' name='email'>
+            <% end %>
+        </div>
       <% end %>
-      <input type='submit' class='bttn-blue' value='Submit'>
-    </div>
+
+      <div>
+        <!-- Allow only logged in people to submit survey. Submission done this way? -->
+        <% unless @logged_in_user.nil? %>
+          <label for="email">Email Address:
+            <input type='text' name='email' placeholder='E-Mail Address' required>
+         </label>
+        <% else %>
+          <input type='hidden' name='email'>
+        <% end %>
+        <input type='submit' class='bttn-blue' value='Submit'>
+      </div>
     </form>
 
   </ol>

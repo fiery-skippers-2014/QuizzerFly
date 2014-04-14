@@ -19,6 +19,7 @@ require 'bcrypt'
 require 'gravtastic'
 
 require 'sinatra'
+require 'sinatra/flash'
 require "sinatra/reloader" if development?
 
 require 'erb'
