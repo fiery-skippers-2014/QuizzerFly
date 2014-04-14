@@ -31,7 +31,7 @@ post '/register' do
     redirect "/users/#{@user.id}"
   else
     @errors = @user.errors.full_messages
-    redirect "/"
+    erb :'user/register'
   end
 end
 

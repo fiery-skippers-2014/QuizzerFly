@@ -3,6 +3,8 @@
     <h2>Log in</h2>
     <hr>
 
+    <%= erb :_error_messages %>
+
     <form action="/sessions/new" method="post" id="login">
       <input type="email" name="email" placeholder="example@email.com" required><br>
 
