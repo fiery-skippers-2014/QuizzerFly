@@ -2,23 +2,22 @@
 <hr>
 
 <form action="/surveys/new" method="POST" class="create_survey">
+
   <label for="title">Title:<br>
   <input type="text" name="title" placeholder="Survey Title">
   </label>
+
   <label for="description">Description:
   <input type="text" name="description" placeholder="Survey Description">
   </label>
 
-<!-- Making Questions -->
 
-<!-- surveys/:id/questions/new -->
-
-<div id="question_inputs">
-  <div id = "questions">
+  <!-- Making Questions -->
+  <!-- surveys/:id/questions/new -->
+  <div id="question_inputs">
+    <div id="questions"></div>
+    <br><a id="addQuestionBtn" href="#"> Add Question</a></div>
+    <input type="submit" value="Submit">
   </div>
-  <br><a id="addQuestionBtn" href="#"> Add Question</a></div>
-  <input type="submit" value="Submit">
 </form>
-
-</div>
 

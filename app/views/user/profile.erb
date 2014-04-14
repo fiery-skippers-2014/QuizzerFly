@@ -1,34 +1,41 @@
 <div id="content" class="main container-mid">
 
-<!-- This User's MAIN INFORMATION -->
-  <div class="container-sml">
-    
-    user: <%= @user.name %> | ID:<%= @user.id %><br>
-    created: <%= @user.created_at %><br>
-    email: <%= @user.email %><br>
+  <%= erb :'user/_user_info', :layout => false, :locals => {:user => @user}  %>
 
-<br>
-<hr><hr>
-<br>
-
-  <% if @user.id == @logged_in_user.id %>
-    <!-- This user can create their own survey -->
-    <%= erb :'survey/_create' %>
+  <% if @logged_in_user == current_user %>
+    <div class="indented">
+      <span>
+        <a href="/users/<%= @user.id %>/delete"><button type="button" id="bttn" class="brown">Delete Account</button></a> 
+        <a href="/users/<%= @user.id %>/update_account"><button type="button" id="bttn" class="brown">Edit Account</button></a>
+      </span>
+    </div>
   <% end %>
 
-  <br><br><br>
+  <br>
+  <hr><hr>
+  <br>
 
-  <!-- This User's surveys -->
-  <h3><%= @user.name %> has created <%= @users_surveys.count %> Survey(s)</h3>
-  <hr>
-  <%= erb :'survey/_show_all', :layout => false, :locals => {:surveys => @users_surveys}  %>
+  <div class="main container-mid">
+    <% if @logged_in_user %>
+      <% if @user.id == @logged_in_user.id %>
+        <!-- This user can create their own survey -->
+        <%= erb :'survey/_create' %>
+      <% end %>
+    <% end %>
 
-  <br><br>
+    <br><br><br>
 
-  <!-- Survey's this user has taken -->
-  <h3><%= @user.name %> has Taken <%= @completed_surveys.count %> Surveys</h3>
-  <hr>
-  <%= erb :'survey/_show_all', :layout => false, :locals => {:surveys => @completed_surveys}  %>
+    <!-- This User's surveys -->
+    <h3><%= @user.name %> has created <%= @users_surveys.count %> Survey(s)</h3>
+    <hr>
+    <%= erb :'survey/_show_all', :layout => false, :locals => {:surveys => @users_surveys}  %>
 
+    <br><br>
 
+    <!-- Survey's this user has taken -->
+    <h3><%= @user.name %> has Taken <%= @completed_surveys.count %> Surveys</h3>
+    <hr>
+    <%= erb :'survey/_show_all', :layout => false, :locals => {:surveys => @completed_surveys}  %>
+
+  </div>
 </div>

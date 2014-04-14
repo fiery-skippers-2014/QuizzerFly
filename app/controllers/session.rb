@@ -12,8 +12,10 @@ post '/sessions/new' do
   if @user.password_hash == BCrypt::Engine.hash_secret(params[:password_hash], @user.password_salt)
     session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
+  else
+    @errors = @user.errors.full_messages
+    erb :'/sessions/new'
   end
-  redirect '/'
 end
 
 

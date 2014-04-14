@@ -2,8 +2,7 @@
 
 <% if @logged_in_user %>
   <% if @logged_in_user.id == survey.user_id %>
-    <span><a href="/surveys/<%= survey.id %>/edit"><button type="button">Edit</button></a></span>
-    <span><a href="/surveys/<%= survey.id %>/delete"><button type="button">Delete</button></a></span>
+    <span><a href="/surveys/<%= survey.id %>/delete"><button type="button" id="bttn" class="brown">Delete</button></a></span>
   <% end %>
 <% end %>
 

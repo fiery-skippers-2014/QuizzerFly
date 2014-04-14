@@ -9,15 +9,20 @@
 
     <form action ='/surveys/<%=@survey.id %>/completed_surveys/new' method='post'>
     <% @survey.questions.each_with_index do |question, index| %>
-
+      <div class="question">
         <!-- Partial to hold html inputs in form to make params for completed survey -->
-        <%= index + 1 %>. Question: "<%= question.question_text %>"
+        <%= index + 1 %>. "<%= question.question_text %>"
+
           <% for choice in question.choices %>
 
-            <input type="radio" name="question_<%= question.id %>" value="<%= choice.id %>"><%= choice.choice_text %><br>
+            <span class="choice">
+              <input type="radio" class ="radio" name="question_<%= question.id %>" value="<%= choice.id %>" id="<%= question.id %>">
+              <label for="<%= question.id %>"><%= choice.choice_text %>
+              </label>
+            </span>
 
           <% end %>
-        <hr>
+      </div>
     <% end %>
     <div>
       <!-- Allow only logged in people to submit survey. Submission done this way? -->

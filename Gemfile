@@ -15,6 +15,7 @@ gem 'activerecord'
 
 gem 'rake'
 gem 'bcrypt-ruby'
+gem 'gravtastic'
 
 gem 'shotgun'
 

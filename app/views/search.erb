@@ -1,0 +1,24 @@
+<div id="content" class="main container-mid">
+
+  <!-- SEARCH FORM -->
+  <div id="search_bar">
+    <form action="/search/*" method="get">
+      <input id="input" type="text" placeholder="user" name="name">
+      <input id="bttn" class="blue" type="submit" value="Search">
+    </form>
+  </div>
+
+
+  <!-- SEARCHED USER -->
+  <% if @searched_users %>
+    <br><hr><br>
+
+    <h2>QuizzerFly Members similar to "<%= @search_term %>"</h2>
+    <ul>
+      <% @searched_users.each do |user| %>
+        <li><a href="/users/<%= user.id %>"><%= user.name %></a></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+</div>

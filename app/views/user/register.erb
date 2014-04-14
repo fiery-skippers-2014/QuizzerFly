@@ -3,14 +3,14 @@
     <h2>Become a member</h2>
     <hr>
 
+    <%= erb :_error_messages %>
+
     <form action="/register" method="post" id="register">
 
       <input type="text" name="name" placeholder="Full name" required><br>
-
       <input type="email" name="email" placeholder="example@email.com" required><br>
-
       <input type="password" name="password_hash" placeholder="6 or more characters"><br>
-
+      
       <input type="submit" class="submit bttn-blue" value="Sign Up">
 
       <div class="clearfix"></div>

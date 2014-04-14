@@ -1,0 +1,13 @@
+<% if @errors %>
+  <div id="error_explanation">
+    Form has <%= @errors.count %> error(s).
+  </div>
+
+  <div class="alert">
+    <ul>
+    <% @errors.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
