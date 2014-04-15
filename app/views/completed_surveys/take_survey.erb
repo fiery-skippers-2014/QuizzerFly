@@ -1,3 +1,6 @@
+
+<!-- woah this is waaaaaaay too much logic for the views. simple iterators and getters
+are generally all you should be doing -->
 <div id="content" class="main container-mid">
   <h1><a href="/surveys/<%= @survey.id %>"><%= @survey.title %></a></h1>
   <h2><%= @survey.description %></h2>
@@ -8,9 +11,10 @@
     <form action ='/surveys/<%=@survey.id %>/completed_surveys/new' method='post'>
       <% @survey.questions.each_with_index do |question, index| %>
         <div class="question">
-
+          <!-- this can be handled by a li element, or by css. -->
           <%= index + 1 %>. "<%= question.question_text %>"
-
+            <!-- nested iterators are fine. nested iterators that require out-of-block
+            scope are probably not. choice.question_id should get you the data need. -->
             <% for choice in question.choices %>
 
               <span class="choice">

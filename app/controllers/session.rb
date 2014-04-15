@@ -16,6 +16,7 @@ post '/sessions/new' do
       flash[:success] = "Welcome back #{@user.name}!"
       redirect "/users/#{@user.id}"
     else
+      # nice use of flash.
       flash[:error] = "We do not recognize that password."
       erb :'user/login'
     end

@@ -3,6 +3,7 @@
 
   <div class="survey panel">
     <%= @survey.title %> by <a href="/users/<%= @user.id %>"><%= @user.name %></a> |
+    <!-- too much logic for the views. Handle it in the model! -->
     <span class="time"><%= @survey.created_at.strftime("%H minutes and %M seconds ago") %></span><br>
     <%= @survey.description %><br>
     <hr>

@@ -15,6 +15,7 @@ class Survey < ActiveRecord::Base
   end
 
   def params_to_question_array(params)
+    # im confused as to why you need specific numbers here.
     question_counter = 1
     questions_array = []
     while params.has_key?("question#{question_counter}")

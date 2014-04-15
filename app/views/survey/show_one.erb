@@ -21,14 +21,15 @@
           <ul class="results">
 
             <% @survey.choices.each do |choice| %>
+              <!-- im confused as to why you should need this conditional, survey.choices should return the right data. -->
               <% if choice.question.id == question.id %>
 
                 <li><%= choice.id %>. <%= choice.choice_text %>
                   <% @user.results.each do |result| %>
                     <% if result.choice_id == choice.id %> &nbsp;
-                      Picked by user: <%= result.user_id %>!   
+                      Picked by user: <%= result.user_id %>!
                 </li>
-                
+
                 <% end %>
                 <% end %>
               <% end %>
