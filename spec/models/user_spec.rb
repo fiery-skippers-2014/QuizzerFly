@@ -1,99 +1,18 @@
 require 'spec_helper'
 
 describe User do
-  before do
-    @user = User.new(name: "Example User", email: "user@example.com",
-              password_hash: "foobar")
-  end
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:email) }
+  it { should validate_presence_of(:password_hash) }
 
-  subject { @user }
-    it { should respond_to(:name) }
-    it { should respond_to(:email) }
-    it { should respond_to(:password_hash) }
-    it { should respond_to(:surveys) }
+  it { should have_many(:surveys) }
+  it { should have_many(:results) }
+  it { should have_many(:completed_surveys) }
 
-  # NAME:
-  describe "when name is not present" do
-    before { @user.name = " " }
-    it { should_not be_valid }
-  end
-  describe "when name is too long" do
-    before { @user.name = "a" * 51 }
-    it { should_not be_valid }
-  end
+  it { should ensure_length_of(:password_hash).is_at_least(6) }
 
-  # EMAIL:
-  describe "when email is not present" do
-    before { @user.email = " " }
-    it { should_not be_valid }
-  end
-  describe "when email format is invalid" do
-    it "should be invalid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-                     foo@bar_baz.com foo@bar+baz.com]
-      addresses.each do |invalid_address|
-        @user.email = invalid_address
-        expect(@user).not_to be_valid
-      end
-    end
-  end
-  describe "when email format is valid" do
-    it "should be valid" do
-      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
-      addresses.each do |valid_address|
-        @user.email = valid_address
-        expect(@user).to be_valid
-      end
-    end
-  end
-  describe "when email address is already taken" do
-    before do
-      user_with_same_email = @user.dup
-      user_with_same_email.email = @user.email.upcase
-      user_with_same_email.save
-    end
-    it { should_not be_valid }
-  end
-  describe "email address with mixed case" do
-    let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
-    # it "should be saved as all lower-case" do
-    #   @user.email = mixed_case_email
-    #   @user.save
-    #   expect(@user.reload.email).to eq mixed_case_email.downcase
-    # end
-  end
+  it { should validate_uniqueness_of(:email) }
 
-
-  # PASSWORD:
-  describe "when password is not present" do
-    before do
-      @user = User.new(name: "Example User", email: "user@example.com",
-                       password_hash: " ", password_salt: " ")
-    end
-    it { should_not be_valid }
-  end
-  describe "when password doesn't match confirmation" do
-    before { @user.password_salt = "mismatch" }
-    it { should_not be_valid }
-  end
-  describe "with a password that's too short" do
-    before { @user.password_hash = @user.password_salt = "a" * 5 }
-    it { should be_invalid }
-  end
-
-
-
-  describe "survey associations" do
-    before { @user.save }
-
-    # it "should destroy associated surveys" do
-    #   surveys = @user.surveys.to_a
-    #   @user.destroy
-    #   expect(surveys).not_to be_empty
-    #   surveys.each do |survey|
-    #     expect(Survey.where(id: survey.id)).to be_empty
-    #   end
-    # end
-  end
-
+  it { should allow_value('this@this.com').for(:email) }
+  it { should_not allow_value('notanemail').for(:email) }
 end
